@@ -8,9 +8,9 @@ async function draw() {
   const image3 = ctx1.createImageData(20, 20)
 
   for (let i = 0; i < image.data.length; i++) {
-    image.data[i * 4] = 40
-    image.data[i * 4 + 1] = 155
-    image.data[i * 4 + 2] = 255
+    image.data[i * 4] = Math.floor(Math.random() * 256)
+    image.data[i * 4 + 1] = Math.floor(Math.random() * 256)
+    image.data[i * 4 + 2] = Math.floor(Math.random() * 256)
     image.data[i * 4 + 3] = 255
   }
 
@@ -25,30 +25,27 @@ async function draw() {
   let y = 0
 
   setInterval(function put() {
-    // if(i*20 === image.width) {
-
-    // }
-
-    ctx1.putImageData(image, x, y * 20)
-    if ( y> 0) {
-      ctx1.putImageData(image2, x, (y - 1) * 20)
-    }
-    y++
-  }, 100)
+  ctx1.putImageData(image, x, y * 20)
+  y++
+  if (y * 20 === canvas1.height) {
+    y = 0
+    x += 20
+  }
+}, 100)
 
 
-  // 長方形として切り出す部分の指定
-  const bitmap = await createImageBitmap(
-    image,
-    0, 0, 100, 100
-  )
+// 長方形として切り出す部分の指定
+const bitmap = await createImageBitmap(
+  image,
+  0, 0, 100, 100
+)
 
-  /**
-   * @type {HTMLCanvasElement}
-   */
+/**
+ * @type {HTMLCanvasElement}
+ */
 
-  // 画像を貼り付ける
-  ctx2.drawImage(bitmap, 0, 0, 300, 300)
+// 画像を貼り付ける
+ctx2.drawImage(bitmap, 0, 0, 300, 300)
 }
 
 draw()
