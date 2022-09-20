@@ -2,15 +2,22 @@
 <html>
 
 <head>
-	<title>Parcel Sandbox</title>
-	<meta charset="UTF-8" />
+  <title>Parcel Sandbox</title>
+  <meta charset="UTF-8" />
   <link rel="stylesheet" href="./src/styles.css">
 </head>
 
 <body>
-	<div id="app"></div>
+  <div id="app">
+    <h1>White noise on canvas</h1>
+    <div id='box'></div>
+      <!-- canvasタグのサイズはwidth属性とheight属性を使わないと規定値は、幅 300 ピクセル、高さ 150 ピクセルとなる.
+      https://maku77.github.io/js/canvas/size.html -->
+    <canvas id='test1' width='300' height='300'></canvas>
+    <canvas id='test2' width='300' height='300'></canvas>
+  </div>
 
-	<script src="src/index.js" />
+  <script src="src/index.js" />
 </body>
 
 </html>
